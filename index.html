@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>РыбаТекст - онлайн генератор текста для сайта</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <meta name="keywords" content="генератор текста, рыбатекст, lipsum, lorem ipsum, рыба текст, контент, fishtext, рыба-текст">
+    <meta name="description" content="Сервис генерирует заданное количество абзацев более-менее осмысленного текста на русском языке. В англоязычном варианте классическим примером такого рыба-текста является Lorem Ipsum.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="yandex-verification" content="5bc74e005ce1f07d" />
+    <meta name="google-site-verification" content="4uWShTog1q0WRuCO-CoIUOv_Agr3rPHSLng8RThjGa8" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue"></script>
+    <script src="js/vue-clipboard.js"></script>
+</head>
+<body>
+<div class="infoMessage"></div>
+<header>
+    <div class="container">
+        <div class="logo">
+            <img src="img/fish-8.svg" alt="">
+            <div>
+                РыбаТекст.рф
+                <div class="description">онлайн генератор текста</div>
+            </div>
+        </div>
+        <img src="img/fish-7.svg" class="animateFish" alt="">
+        <img src="img/bubbles.svg" class="animateBubble">
+        <img src="img/bubbles.svg" class="animateBubble2">
+    </div>
+</header>
+
+<div id="app" class="main-content">
+    <div class="container">
+        <div class="generate-settings">
+            Количество абзацев
+            <input v-model="numP" class="numParagraph" @keyup="generateContent()">
+            <input v-model="numP" type="range" min="1" max="20" @change="generateContent()">
+            <span>Тематика</span>
+            <select v-model="theme" @change="generateContent()">
+                <option value="0">Компьютеры</option>
+                <option value="1">История</option>
+            </select>
+            <div class="checkbox">
+                <input id="showTagP" type="checkbox" v-model="showTags" @change="generateContent()">
+                <label for="showTagP">Отображать html-теги</label>
+            </div>
+        </div>
+        <div class="generate-content">
+            <div class="command-button">
+                <div class="refresh" @click="generateContent()">
+                    <img src="img/icon-refresh.svg" alt="">
+                    <span>Обновить</span>
+                </div>
+                <div class="copy" @click="doCopy()">
+                    <img src="img/icon-copy.svg" alt="">
+                    <span>Копировать</span>
+                    <div class="hint" v-if="showHint">Скопировано</div>
+                </div>
+            </div>
+            <textarea readonly class="generate-content" v-model="message">{{message}}</textarea>
+            <div class="content-info">
+                Количество символов <span id="numberSymbols">{{message.length - numP * 2}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="about">
+    <div class="container">
+        <h1>О сервисе "РыбаТекст.рф"</h1>
+        <p>Сервис "РыбаТекст.рф" генерирует заданное количество абзацев более-менее осмысленного текста на русском языке. В англоязычном варианте классическим примером такого рыба-текста является Lorem Ipsum.</p>
+        <p>Данный генератор текста будет полезен для верстальщиков и дизайнеров, которым требуется рандомный текст для заполнения сайтов и макетов.</p>
+        <p>Не стоит использовать сгенерированный текст для реальных проектов. Используйте рыбный текст только для тестирования и прототипирования. Для готового проекта лучше взять осмысленную статью.</p>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div>2017 © Рыбатекст.рф</div>
+        <div>cc.art.rec@ya.ru</div>
+
+        <div>
+            <!-- Yandex.Metrika counter -->
+            <script type="text/javascript">
+                (function (d, w, c) {
+                    (w[c] = w[c] || []).push(function() {
+                        try {
+                            w.yaCounter44188584 = new Ya.Metrika({
+                                id:44188584,
+                                clickmap:true,
+                                trackLinks:true,
+                                accurateTrackBounce:true
+                            });
+                        } catch(e) { }
+                    });
+
+                    var n = d.getElementsByTagName("script")[0],
+                        s = d.createElement("script"),
+                        f = function () { n.parentNode.insertBefore(s, n); };
+                    s.type = "text/javascript";
+                    s.async = true;
+                    s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+                    if (w.opera == "[object Opera]") {
+                        d.addEventListener("DOMContentLoaded", f, false);
+                    } else { f(); }
+                })(document, window, "yandex_metrika_callbacks");
+            </script>
+            <noscript>
+                <div>
+                    <img src="https://mc.yandex.ru/watch/44188584" style="position:absolute; left:-9999px;" alt="" />
+                </div>
+            </noscript>
+            <!-- /Yandex.Metrika counter -->
+        </div>
+    </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
