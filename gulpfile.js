@@ -32,3 +32,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('build', ['clean', 'html', 'sass', 'js', 'img'], function() {});
+
+gulp.task('watch', function () {
+    gulp.watch('app/*.*', ['build']);
+});

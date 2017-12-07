@@ -32,7 +32,11 @@
 <div id="app" class="main-content">
     <div class="container">
         <div class="generate-settings">
-            Количество абзацев
+            Количество
+            <select v-model="type" @change="generateContent()">
+                <option value="0">абзацев</option>
+                <option value="1">символов</option>
+            </select>
             <input v-model="numP" class="numParagraph" @keyup="generateContent()">
             <input v-model="numP" type="range" min="1" max="20" @change="generateContent()">
             <span>Тематика</span>

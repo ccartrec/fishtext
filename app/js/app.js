@@ -1,4 +1,4 @@
-var ft = new Vue({
+new Vue({
     el: '#app',
     data: {
         numP: 3,
@@ -6,6 +6,7 @@ var ft = new Vue({
         showHint: false,
         message: 'Сгенерируйте нужное количество абзацев=)',
         theme: 0,
+        type: 0,
         textContent: [
             ["",
             "Сегодня люди не представляют свою жизнь без современных технологий, в частности, без компьютера.",
@@ -40,10 +41,18 @@ var ft = new Vue({
     methods: {
         generateContent: function () {
             this.message = ''; // очистка поля
-            for(var i = 0; i < this.numP; i++) {
-                var textNumber = Math['floor'](Math['random']() * (10 - 1 + 1)) + 1;
-                this.message += (this.showTags ? '<p>':'') + this.textContent[this.theme][textNumber] + (this.showTags ? '</p>':'') + '\n\n';
+
+            if (this.type === 0) {
+                for(var i = 0; i < this.numP; i++) {
+                    var textNumber = Math['floor'](Math['random']() * (10 - 1 + 1)) + 1;
+                    this.message += (this.showTags ? '<p>':'') + this.textContent[this.theme][textNumber] + (this.showTags ? '</p>':'') + '\n\n';
+                }
+            } else {
+                for(var j = 0; j < this.numP; j++) {
+                    this.message += "А";
+                }
             }
+
         },
         doCopy: function () {
             var $this = this;
