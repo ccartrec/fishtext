@@ -6,7 +6,7 @@ new Vue({
         showHint: false,
         message: 'Сгенерируйте нужное количество абзацев=)',
         theme: 0,
-        type: 0,
+        type: 'paragraph',
         textContent: [
             ["",
             "Сегодня люди не представляют свою жизнь без современных технологий, в частности, без компьютера.",
@@ -42,14 +42,19 @@ new Vue({
         generateContent: function () {
             this.message = ''; // очистка поля
 
-            if (this.type === 0) {
+            if (this.type === 'paragraph') {
                 for(var i = 0; i < this.numP; i++) {
                     var textNumber = Math['floor'](Math['random']() * (10 - 1 + 1)) + 1;
                     this.message += (this.showTags ? '<p>':'') + this.textContent[this.theme][textNumber] + (this.showTags ? '</p>':'') + '\n\n';
                 }
             } else {
-                for(var j = 0; j < this.numP; j++) {
-                    this.message += "А";
+                for(var j = 1; j < this.numP; j++) {
+                    if(this.numP < this.textContent[this.theme][j].length) {
+                        this.message += (this.showTags ? '<p>':'') + this.textContent[this.theme][j].slice(0,j) + (this.showTags ? '</p>':'') + '\n\n';
+                    } else {
+                        this.message += "возьмем второй";
+                    }
+
                 }
             }
 

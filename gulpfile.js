@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 
 
 gulp.task('js', function () {
-    gulp.src('app/js/app.js')
+    gulp.src('app/js/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('build/js'))
 });
@@ -34,5 +34,7 @@ gulp.task('html', function() {
 gulp.task('build', ['clean', 'html', 'sass', 'js', 'img'], function() {});
 
 gulp.task('watch', function () {
-    gulp.watch('app/*.*', ['build']);
+    gulp.watch('app/*.*', ['html']);
+    gulp.watch('app/scss/*.scss', ['sass']);
+    gulp.watch('app/js/*.js', ['js']);
 });

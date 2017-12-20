@@ -251,16 +251,11 @@ header .container {
 
 .copy {
     position: relative;
-}
+    transition: all 0.2s ease 0s;
 
-.hint {
-    position: absolute;
-    background-color: #b7c5d0 !important;
-    font-size: 12px;
-    border-radius: 12px;
-    top: 50%;
-    left: 100%;
-    transform: translateY(-50%);
+    &.success {
+        background-color: #0ed01d;
+    }
 }
 
 footer {
