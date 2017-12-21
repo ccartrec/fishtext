@@ -7,6 +7,7 @@ new Vue({
         message: 'Сгенерируйте нужное количество абзацев=)',
         theme: 0,
         type: 'paragraph',
+        symbolsLength: 0,
         textContent: [
             ["",
             "Сегодня люди не представляют свою жизнь без современных технологий, в частности, без компьютера.",
@@ -47,15 +48,22 @@ new Vue({
                     var textNumber = Math['floor'](Math['random']() * (10 - 1 + 1)) + 1;
                     this.message += (this.showTags ? '<p>':'') + this.textContent[this.theme][textNumber] + (this.showTags ? '</p>':'') + '\n\n';
                 }
-            } else {
-                for(var j = 1; j < this.numP; j++) {
-                    if(this.numP < this.textContent[this.theme][j].length) {
-                        this.message += (this.showTags ? '<p>':'') + this.textContent[this.theme][j].slice(0,j) + (this.showTags ? '</p>':'') + '\n\n';
-                    } else {
-                        this.message += "возьмем второй";
-                    }
 
+                this.symbolsLength = this.message.length - this.numP * 2;
+            } else {
+                //this.message += (this.showTags ? '<p>':'') + this.textContent[this.theme][1].slice(0, this.numP) + (this.showTags ? '</p>':'');
+
+                if (this.message.length < this.numP) {
+                  for (j = 1; this.message.length < this.numP; j++ ) {
+                      this.message += (this.showTags ? '<p>':'') + this.textContent[this.theme][j] + (this.showTags ? '</p>':'') + '';
+                      j = (j === 9) ? 1 : j;
+                  }
                 }
+
+                this.message = this.message.slice(0, this.numP);
+
+                this.symbolsLength = this.message.length;
+
             }
 
         },
