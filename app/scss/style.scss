@@ -1,4 +1,3 @@
-/* todo scss*/
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&subset=cyrillic');
 
 * {
@@ -13,15 +12,16 @@ body {
 }
 
 body {
-    font-size: 18px;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 300;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  font-size: 18px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #333;
 }
 
-p {line-height: 1.6em}
+p {line-height: 1.6}
 
 h1 {font-weight: 300;}
 
@@ -137,24 +137,24 @@ select {
 .about p {margin-top: 15px}
 
 header {
-    position: relative;
-    color: #fff;
-    background: #2196f3 url("../img/fish-2.svg") no-repeat;
-    background-position: 90% 30px;
-}
+  position: relative;
+  color: #fff;
+  background: #2196f3 url("../img/fish-2.svg") no-repeat 90% 30px;
 
-header .logo {
+  .logo {
     display: flex;
     align-items: center;
     font-weight: 900;
     font-size: 2em;
     color: #fff;
     text-decoration: none;
-}
+  }
 
-header .container {
+  .container {
     overflow: hidden;
     position: relative;
+  }
+
 }
 
 .logo img {
@@ -195,12 +195,12 @@ header .container {
 }
 
 .generate-settings {
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    font-size: 1.5em;
-}
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  font-size: 1.5em;
 
-.generate-settings div {font-size: 0.7em;}
+  div {font-size: 0.7em;}
+}
 
 .generate-content textarea {
     width: 100%;
@@ -261,6 +261,32 @@ header .container {
 footer {
     background-color: #ccc;
     margin-top: 20px;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.github {
+  position: relative;
+  padding-left: 48px;
+  text-decoration: none;
+  line-height: 32px;
+  color: #333;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    background: url("../img/github.svg") no-repeat center;
+    background-size: cover;
+    margin-right: 16px;
+  }
 }
 
 .animateFish {
